@@ -1,6 +1,6 @@
 const https = require('node:https')
 
-const hostname = 'chatady.com'
+const hostname = 'backend.chatady.com'
 const port = 443
 const prepath = '/api/v1'
 
