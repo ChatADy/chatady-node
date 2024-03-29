@@ -88,4 +88,4 @@ const ChatADy = (publisherId, key, inputClientOptions = {}) => {
   }
 }
 
-module.exports = ChatADy
+module.exports = { ChatADy }
