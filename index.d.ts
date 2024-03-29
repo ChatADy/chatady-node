@@ -1,6 +1,6 @@
 import * as https from 'node:https';
 
-interface ChatAdyOptions {
+interface ChatADyOptions {
   environment?: string;
   noDelay?: boolean;
   timeout?: number;
@@ -18,7 +18,7 @@ interface GetContentsResponse {
   content?: string
 }
 
-export declare const ChatAdy: (publisherId: string, key: string, inputClientOptions?: ChatAdyOptions) => {
+export declare const ChatADy: (publisherId: string, key: string, inputClientOptions?: ChatADyOptions) => {
   getContents: (chatId: string, options?: GetContentsOptions) => Promise<GetContentsResponse>;
   newChat: (chatId: string, entry: string, human: boolean) => Promise<void>;
 };

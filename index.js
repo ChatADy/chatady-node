@@ -1,6 +1,6 @@
 const https = require('node:https')
 
-const ChatAdy = (publisherId, key, inputClientOptions = {}) => {
+const ChatADy = (publisherId, key, inputClientOptions = {}) => {
 
   const hostname = 'backend.chatady.com'
   const port = 443
@@ -88,4 +88,4 @@ const ChatAdy = (publisherId, key, inputClientOptions = {}) => {
   }
 }
 
-module.exports = ChatAdy
+module.exports = ChatADy

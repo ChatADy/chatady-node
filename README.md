@@ -58,7 +58,7 @@ const client = new ChatADy('your_publisher_id', 'your_api_key', options);
 
 ### Retrieving ad contents
 
-To retrieve contents, use the `getContents` method with the chat ID. You can also specify options for filtering:
+To retrieve contents, use the `getContents` method with the chat ID. You can also specify options for better targeting:
 
 ```javascript
 client.getContents('unique_id_identifying_conversation', { humansex: 'male', botsex: 'female' })
