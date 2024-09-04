@@ -49,11 +49,12 @@ const ChatADy = (publisherId, key, inputClientOptions = {}) => {
         req.end();
       });
     },
-    newChat: async (chatId, entry, human) => {
+    newChat: async (chatId, entry, human, content = undefined) => {
       return new Promise((resolve, reject) => {
         const postData = JSON.stringify({
           human,
-          entry
+          entry,
+          content
         });
         const options = {
           hostname,
