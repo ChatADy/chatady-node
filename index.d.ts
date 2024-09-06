@@ -24,7 +24,19 @@ interface ChatContentsOptions {
   botsex?: string;
 }
 
+interface ChatResponse {
+  status: string;
+  content?: ChatContentsResponse;
+}
+
+interface ChatContentsResponse {
+  status: string;
+  message?: string;
+  earnings?: string;
+  content?: string;
+}
+
 export declare const ChatADy: (publisherId: string, key: string, inputClientOptions?: ChatADyOptions) => {
   getContents: (chatId: string, options?: GetContentsOptions) => Promise<GetContentsResponse>;
-  newChat: (chatId: string, entry: string, human: boolean, content?: ChatContentsOptions) => Promise<void>;
+  newChat: (chatId: string, entry: string, human: boolean, content?: ChatContentsOptions) => Promise<ChatResponse>;
 };
