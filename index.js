@@ -74,7 +74,7 @@ const ChatADy = (publisherId, key, inputClientOptions = {}) => {
             data += chunk;
           });
           response.on('end', () => {
-            resolve();
+            resolve(data);
           });
         });
         req.setNoDelay(clientOptions.noDelay)
