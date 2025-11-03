@@ -1,6 +1,6 @@
 # ChatADy Package for Node.js
 
-The `ChatADy` package is a Node.js wrapper for the ChatADy API, designed to facilitate easy interaction with ChatADy's services from Node.js applications. It offers methods to retrieve ad contents and send in messages.
+The `ChatADy` package is a Node.js wrapper for the ChatADy API, designed to facilitate easy interaction with ChatADy's services from Node.js applications. It offers methods to send in messages and retrieve AD content.
 
 ## Installation
 
@@ -30,15 +30,11 @@ import { ChatADy } from 'chatady-node';
 // Initialize the ChatADy client
 const client = new ChatADy('your_publisher_id', 'your_api_key');
 
-// Send in chat message
-client.newChat('unique_id_identifying_conversation', 'your_entry_message', 'boolean_human_or_bot')
-  .then(() => console.log('New chat message stored'))
-  .catch(error => console.error(error));
-
-// Get ad contents
-client.getContents('unique_id_identifying_conversation')
+// Send in chat message & retrieve ADs
+client.newChat('unique_id_conversation', 'unique_id_speaker', 'speaker_message', 'request_ad_type')
   .then(response => console.log(response))
   .catch(error => console.error(error));
+
 ```
 
 ### Initializing the Client
@@ -56,23 +52,23 @@ const options = { environment: 'production', noDelay: true, timeout: 1000 };
 const client = new ChatADy('your_publisher_id', 'your_api_key', options);
 ```
 
-### Retrieving ad contents
+### Sending in a new chat message
 
-To retrieve contents, use the `getContents` method with the chat ID. You can also specify options for better targeting:
+To send in new chat message, use the `newChat` method with the chat ID, speaker ID and speaker message
 
 ```javascript
-client.getContents('unique_id_identifying_conversation', { humansex: 'male', botsex: 'female' })
-  .then(response => console.log(response))
+client.newChat('conversation_id_1', 'speaker_id_1', 'Hello, ChatADy!')
+  .then(() => console.log('New chat message stored'))
   .catch(error => console.error(error));
 ```
 
-### Sending in a new chat message
+### Sending in a new chat message & retrieve AD content
 
-To send in new chat message, use the `newChat` method with the chat ID, entry message, and human identifier:
+To retrieve AD, use the `newChat` method with the chat ID, speaker ID, speaker message and AD type (`PPC-TEXTLINK`, `PPV-TEXT`, `PPS-VOICE`)
 
 ```javascript
-client.newChat('unique_id_identifying_conversation', 'Hello, ChatADy!', 'boolean_human_or_bot')
-  .then(() => console.log('New chat message stored'))
+client.newChat('conversation_id_1', 'speaker_id_1', 'Hello, ChatADy!', 'PPC-TEXTLINK')
+  .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
 

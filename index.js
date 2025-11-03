@@ -12,54 +12,16 @@ const ChatADy = (publisherId, key, inputClientOptions = {}) => {
   }, inputClientOptions)
 
   return {
-    getContents: async (chatId, options = {humansex: undefined, botsex: undefined}) => {
-      let query = '?'
-      if (options.humansex) {
-        query = query + 'humansex=' + options.humansex + '&'
-      }
-      if (options.botsex) {
-        query = query + 'botsex=' + options.botsex
-      }
-      return new Promise((resolve, reject) => {
-        const options = {
-          hostname,
-          port,
-          path: `${prepath}/${clientOptions.environment === 'production' ? 'contents' : 'test-contents'}/${publisherId}/${chatId}${query}`,
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': key
-          }
-        };
-        let data = '';
-        const req = https.request(options, (response) => {
-          response.setEncoding('utf8');
-          response.on('data', (chunk) => {
-            data += chunk;
-          });
-          response.on('end', () => {
-            resolve(data);
-          });
-        });
-        req.setNoDelay(clientOptions.noDelay)
-        req.setTimeout(clientOptions.timeout)
-        req.on('error', (e) => {
-          reject(`ChatADy error: ${e.message}`);
-        });
-        req.end();
-      });
-    },
-    newChat: async (chatId, entry, human, content = undefined) => {
+    newChat: async (chatId, chatterId, entry, ad = undefined) => {
       return new Promise((resolve, reject) => {
         const postData = JSON.stringify({
-          human,
           entry,
-          content
+          ad
         });
         const options = {
           hostname,
           port,
-          path: `${prepath}/${clientOptions.environment === 'production' ? 'chats' : 'test-chats'}/${publisherId}/${chatId}`,
+          path: `${prepath}/${clientOptions.environment === 'production' ? 'chats' : 'test-chats'}/${publisherId}/${chatId}/${chatterId}`,
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
