@@ -12,11 +12,12 @@ const ChatADy = (publisherId, key, inputClientOptions = {}) => {
   }, inputClientOptions)
 
   return {
-    newChat: async (chatId, chatterId, entry, ad = undefined) => {
+    newChat: async (chatId, chatterId, chatterIp, entry, ad = undefined) => {
       return new Promise((resolve, reject) => {
         const postData = JSON.stringify({
           entry,
-          ad
+          ad,
+          chatterIp
         });
         const options = {
           hostname,

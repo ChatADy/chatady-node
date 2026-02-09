@@ -31,7 +31,7 @@ import { ChatADy } from 'chatady-node';
 const client = new ChatADy('your_publisher_id', 'your_api_key');
 
 // Send in chat message & retrieve ADs
-client.newChat('unique_id_conversation', 'unique_id_speaker', 'speaker_message', 'request_ad_type')
+client.newChat('unique_id_conversation', 'unique_id_speaker', 'speaker_ip', 'speaker_message', 'request_ad_type')
   .then(response => console.log(response))
   .catch(error => console.error(error));
 
@@ -54,20 +54,20 @@ const client = new ChatADy('your_publisher_id', 'your_api_key', options);
 
 ### Sending in a new chat message
 
-To send in new chat message, use the `newChat` method with the chat ID, speaker ID and speaker message
+To send in new chat message, use the `newChat` method with the chat ID, speaker ID, speaker IP and speaker message
 
 ```javascript
-client.newChat('conversation_id_1', 'speaker_id_1', 'Hello, ChatADy!')
+client.newChat('conversation_id_1', 'speaker_id_1', '203.0.113.10', 'Hello, ChatADy!')
   .then(() => console.log('New chat message stored'))
   .catch(error => console.error(error));
 ```
 
 ### Sending in a new chat message & retrieve AD content
 
-To retrieve AD, use the `newChat` method with the chat ID, speaker ID, speaker message and AD type (`PPC-TEXTLINK`, `PPV-TEXT`, `PPS-VOICE`)
+To retrieve AD, use the `newChat` method with the chat ID, speaker ID, speaker IP, speaker message and AD type (`PPC-TEXTLINK`, `PPV-TEXT`, `PPS-VOICE`)
 
 ```javascript
-client.newChat('conversation_id_1', 'speaker_id_1', 'Hello, ChatADy!', 'PPC-TEXTLINK')
+client.newChat('conversation_id_1', 'speaker_id_1', '203.0.113.10', 'Hello, ChatADy!', 'PPC-TEXTLINK')
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```

@@ -17,5 +17,5 @@ interface ChatContentsResponse {
 }
 
 export declare const ChatADy: (publisherId: string, key: string, inputClientOptions?: ChatADyOptions) => {
-  newChat: (chatId: string, chatterId: string, entry: string, ad?: "PPC-TEXTLINK" | "PPV-TEXT" | "PPS-VOICE") => Promise<ChatResponse>;
+  newChat: (chatId: string, chatterId: string, chatterIp: string, entry: string, ad?: "PPC-TEXTLINK" | "PPV-TEXT" | "PPS-VOICE") => Promise<ChatResponse>;
 };
